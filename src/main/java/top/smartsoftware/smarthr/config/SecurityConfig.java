@@ -24,6 +24,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Map;
 
 /**
  * @Description
@@ -61,7 +62,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .successHandler(new AuthenticationSuccessHandler() {
                     @Override
                     public void onAuthenticationSuccess(HttpServletRequest req, HttpServletResponse resp, Authentication authentication) throws IOException, ServletException {
-                        resp.setContentType("application/json:charset=utf-8");
+                        resp.setContentType("application/json;charset=UTF-8");
                         PrintWriter out = resp.getWriter();
                         Hr hr  = (Hr) authentication.getPrincipal();
                         RespBean ok = RespBean.ok("登录成功！", hr);
@@ -74,7 +75,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureHandler(new AuthenticationFailureHandler() {
                     @Override
                     public void onAuthenticationFailure(HttpServletRequest req, HttpServletResponse resp, AuthenticationException exception) throws IOException, ServletException {
-                        resp.setContentType("application/json:charset=utf-8");
+                        resp.setContentType("application/json;charset=utf-8");
                         PrintWriter out = resp.getWriter();
                         RespBean error = RespBean.error("登录失败！");
                         if (exception instanceof LockedException)
