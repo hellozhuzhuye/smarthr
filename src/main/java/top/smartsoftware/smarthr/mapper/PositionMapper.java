@@ -1,6 +1,9 @@
 package top.smartsoftware.smarthr.mapper;
 
 import top.smartsoftware.smarthr.model.Position;
+import top.smartsoftware.smarthr.model.RespBean;
+
+import java.util.List;
 
 public interface PositionMapper {
     int deleteByPrimaryKey(Integer id);
@@ -14,4 +17,8 @@ public interface PositionMapper {
     int updateByPrimaryKeySelective(Position record);
 
     int updateByPrimaryKey(Position record);
+
+    List<Position> getAllPosition();
+
+
 }

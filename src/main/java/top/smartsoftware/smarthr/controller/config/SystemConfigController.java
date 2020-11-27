@@ -1,4 +1,4 @@
-package top.smartsoftware.smarthr.controller;
+package top.smartsoftware.smarthr.controller.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
