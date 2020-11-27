@@ -31,6 +31,29 @@
             </association>
         </collection>
     </resultMap>
+    <resultMap id="MenuWithRole" type="top.smartsoftware.smarthr.model.Menu"  extends="BaseResultMap">
+        <collection property="roles" ofType="top.smartsoftware.smarthr.model.Role">
+            <id column="rid" property="id" jdbcType="INTEGER"/>
+            <result column="rname" property="name" jdbcType="VARCHAR"/>
+            <result column="rnameZh" property="nameZh" jdbcType="VARCHAR"/>
+        </collection>
+    </resultMap>
+
+    <select id="getAllMenusWithRole" resultMap="MenuWithRole">
+        SELECT
+            m.*, r.id AS rid,
+            r. NAME AS rname,
+            r.nameZh AS rnameZh
+        FROM
+            menu m,
+            menu_role mr,
+            role r
+        WHERE
+            m.id = mr.mid
+        AND mr.rid = r.id
+        ORDER BY
+            m.id
+    </select>
 
     <select id="getMenusByHrId" resultMap="Menus2">
         SELECT DISTINCT m1.*,m2.id as id2 ,m2.component as component2,m2.enabled as enabled2 ,m2.iconCls as iconCls2 ,m2.keepAlive as keepAlive2,m2.name as name2,m2.parentId as parentId2,m2.requireAuth as requireAuth2,m2.path as path2
