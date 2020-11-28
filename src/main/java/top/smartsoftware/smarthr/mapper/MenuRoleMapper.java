@@ -1,5 +1,6 @@
 package top.smartsoftware.smarthr.mapper;
 
+import org.apache.ibatis.annotations.Param;
 import top.smartsoftware.smarthr.model.MenuRole;
 
 public interface MenuRoleMapper {
@@ -14,4 +15,8 @@ public interface MenuRoleMapper {
     int updateByPrimaryKeySelective(MenuRole record);
 
     int updateByPrimaryKey(MenuRole record);
+
+    void deleteByRid(Integer rid);
+
+    Integer insertRecord(@Param("rid") Integer rid, @Param("mids") Integer[] mids);
 }

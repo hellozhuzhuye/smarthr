@@ -1,5 +1,6 @@
 package top.smartsoftware.smarthr.mapper;
 
+import org.apache.ibatis.annotations.Param;
 import top.smartsoftware.smarthr.model.Position;
 import top.smartsoftware.smarthr.model.RespBean;
 
@@ -20,5 +21,5 @@ public interface PositionMapper {
 
     List<Position> getAllPosition();
 
-
+    Integer deletePositionByIds(@Param("ids") Integer[] ids);
 }

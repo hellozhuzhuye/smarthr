@@ -52,5 +52,14 @@ public class PositionController {
         }
     }
 
+    @DeleteMapping("/")
+    public RespBean deletePositionByIds(Integer[] ids){
+        if (positionService.deletePositionByIds(ids)==ids.length){
+            return RespBean.ok("删除成功");
+        }else {
+            return RespBean.error("删除失败");
+        }
+    }
+
 
 }

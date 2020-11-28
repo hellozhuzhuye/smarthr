@@ -144,9 +144,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //没有认证时，在这里处理结果，不重定向到登录页
                 exceptionHandling().authenticationEntryPoint(new AuthenticationEntryPoint() {
             @Override
-            public void commence(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
-                httpServletResponse.setContentType("application/json;charset=utf-8");
-                PrintWriter out = httpServletResponse.getWriter();
+            public void commence(HttpServletRequest req, HttpServletResponse resp, AuthenticationException e) throws IOException, ServletException {
+                resp.setContentType("application/json;charset=utf-8");
+                resp.setStatus(401);
+                PrintWriter out = resp.getWriter();
                 RespBean error = RespBean.error("访问失败！");
                 if (e instanceof InsufficientAuthenticationException) {
                     error.setMsg("请求失败，请联系管理员！");
