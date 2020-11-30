@@ -1,5 +1,6 @@
 package top.smartsoftware.smarthr.mapper;
 
+import org.apache.ibatis.annotations.Param;
 import top.smartsoftware.smarthr.model.Hr;
 import top.smartsoftware.smarthr.model.Role;
 
@@ -21,4 +22,6 @@ public interface HrMapper {
     Hr loadUserByUsername(String username);
 
     List<Role> getHrRolesById(Integer id);
+
+    List<Hr> getAllHrs(@Param("hrid") Integer hrid, @Param("keywords") String keywords);
 }

@@ -16,6 +16,7 @@ import java.util.List;
 public class RoleService {
     @Autowired
     RoleMapper roleMapper;
+
     public List<Role> getAllRoles() {
         return roleMapper.getAllRoles();
     }
