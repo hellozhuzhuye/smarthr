@@ -19,8 +19,8 @@ public class PositionService {
     @Autowired
     PositionMapper positionMapper;
 
-    public List<Position> getAllPosition() {
-        return positionMapper.getAllPosition();
+    public List<Position> getAllPositions() {
+        return positionMapper.getAllPositions();
     }
 
 
@@ -41,4 +41,5 @@ public class PositionService {
     public Integer deletePositionByIds(Integer[] ids) {
         return positionMapper.deletePositionByIds(ids);
     }
+
 }

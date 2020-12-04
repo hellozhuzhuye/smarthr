@@ -2,6 +2,8 @@ package top.smartsoftware.smarthr.mapper;
 
 import top.smartsoftware.smarthr.model.Politicsstatus;
 
+import java.util.List;
+
 public interface PoliticsstatusMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,6 @@ public interface PoliticsstatusMapper {
     int updateByPrimaryKeySelective(Politicsstatus record);
 
     int updateByPrimaryKey(Politicsstatus record);
+
+    List<Politicsstatus> getAllPoliticsstatus();
 }

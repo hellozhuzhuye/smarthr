@@ -11,7 +11,7 @@
     id, name, createDate, enabled
   </sql>
 
-  <select id="getAllPosition" resultMap="BaseResultMap">
+  <select id="getAllPositions" resultMap="BaseResultMap">
     select * from position
   </select>
   
