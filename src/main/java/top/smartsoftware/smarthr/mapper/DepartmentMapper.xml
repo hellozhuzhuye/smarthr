@@ -91,6 +91,12 @@
       </if>
     </trim>
   </insert>
+  <select id="getAllDepartmentsWithOutChildren" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List">
+    </include>
+    from department;
+  </select>
   <update id="updateByPrimaryKeySelective" parameterType="top.smartsoftware.smarthr.model.Department" >
     update department
     <set >

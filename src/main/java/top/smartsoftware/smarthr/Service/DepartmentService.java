@@ -16,6 +16,7 @@ import java.util.List;
 public class DepartmentService {
     @Autowired
     DepartmentMapper departmentMapper;
+
     public List<Department> getAllDepartments() {
         return departmentMapper.getAllDepartmentsByParentId(-1);
     }
@@ -29,7 +30,7 @@ public class DepartmentService {
         departmentMapper.deleteDepById(dep);
     }
 
-//    public List<Department> getAllDepartmentsWithOutChildren() {
-//        return departmentMapper.getAllDepartmentsWithOutChildren();
-//    }
+    public List<Department> getAllDepartmentsWithOutChildren() {
+        return departmentMapper.getAllDepartmentsWithOutChildren();
+    }
 }

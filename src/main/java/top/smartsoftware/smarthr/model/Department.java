@@ -1,24 +1,47 @@
 package top.smartsoftware.smarthr.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-public class Department {
+public class Department implements Serializable {
     private Integer id;
 
     private String name;
 
     private Integer parentId;
 
+    public Department() {
+    }
+
+    public Department(String name) {
+
+        this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Department that = (Department) o;
+        return Objects.equals(name, that.name);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(name);
+    }
+
     private String depPath;
 
     private Boolean enabled;
 
     private Boolean isParent;
-
-    private Integer result;
-
     private List<Department> children = new ArrayList<>();
+    private Integer result;
 
     public Integer getResult() {
         return result;
@@ -49,7 +72,15 @@ public class Department {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name == null ? null : name.trim();
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 
     public Integer getParentId() {
@@ -66,14 +97,6 @@ public class Department {
 
     public void setDepPath(String depPath) {
         this.depPath = depPath;
-    }
-
-    public Boolean getEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
     }
 
     public Boolean getParent() {

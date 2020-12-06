@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import top.smartsoftware.smarthr.Service.*;
 import top.smartsoftware.smarthr.model.*;
+import top.smartsoftware.smarthr.utils.POIUtils;
 
 import java.io.IOException;
 import java.util.Date;
@@ -93,18 +94,18 @@ public class EmpBasicController {
         return departmentService.getAllDepartments();
     }
 
-//    @GetMapping("/export")
-//    public ResponseEntity<byte[]> exportData() {
-//        List<Employee> list = (List<Employee>) employeeService.getEmployeeByPage(null, null, new Employee(),null).getData();
-//        return POIUtils.employee2Excel(list);
-//    }
+    @GetMapping("/export")
+    public ResponseEntity<byte[]> exportData() {
+        List<Employee> list = (List<Employee>) employeeService.getEmployeeByPage(null, null, new Employee(),null).getData();
+        return POIUtils.employee2Excel(list);
+    }
 
-//    @PostMapping("/import")
-//    public RespBean importData(MultipartFile file) throws IOException {
-//        List<Employee> list = POIUtils.excel2Employee(file, nationService.getAllNations(), politicsstatusService.getAllPoliticsstatus(), departmentService.getAllDepartmentsWithOutChildren(), positionService.getAllPositions(), jobLevelService.getAllJobLevels());
-//        if (employeeService.addEmps(list) == list.size()) {
-//            return RespBean.ok("上传成功");
-//        }
-//        return RespBean.error("上传失败");
-//    }
+    @PostMapping("/import")
+    public RespBean importData(MultipartFile file) throws IOException {
+        List<Employee> list = POIUtils.excel2Employee(file, nationService.getAllNations(), politicsstatusService.getAllPoliticsstatus(), departmentService.getAllDepartmentsWithOutChildren(), positionService.getAllPositions(), jobLevelService.getAllJobLevels());
+        if (employeeService.addEmps(list) == list.size()) {
+            return RespBean.ok("上传成功");
+        }
+        return RespBean.error("上传失败");
+    }
 }
